@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="styles/style.css"/>
+  <title>Hello, World!</title>
+  <style>
+  #cont{
+    display:flex;
+  background-color: gray;
+    border: 5px solid black;
+    align-items:end;
+    height:40dvh;
+    max-height:50dvh;
+    width:100dvw;
+    overflow:hidden;
+  }
+  .box{
+    width:20%;
+    height:90%;baseline;
+    margin:10px;
+    padding:1dvh;
+    text-align:center;
+    background-color: blue;
+  }
+  button{
+    height : 30%;
+    width: 10%;
+  }
+  header{
+    padding:1dvh;
+    margin:5dvh;
+    
+    font-size:48px;
+    font-family: "Times New Roman", Times, serif;
+    height:10dvh;
+    display:block;
+    text-align:center;
+  }
+  </style>
+</head>
+<body>
+  <header>
+    <b>Bubble Sort</b>
+  </header>
+  <div id="cont">
+    <div class="box" id="1"></div>
+    <div class="box" id="2"></div>
+    <div class="box" id="3"></div>
+    <div class="box" id="4"></div>
+    <div class="box" id="5"></div>
+    <div class="box" id="6"></div>
+    <div class="box" id="7"></div>
+    <div class="box" id="8"></div>
+    <div class="box" id="9"></div>
+    <div class="box" id="10"></div>
+  </div>
+  <div id="demo"></div>
+  <p id="demo2"></p>
+  <button  onclick="action()"> set</button>
+   <script>
+  let element=[];
+  let array=[];
+  for(let i=0;i<10;i++)
+    {
+      element[i]=document.getElementById(i+1).style;
+      array[i]=(Math.random()*100)%100;
+      
+    }
+    show();
+    function show()
+    {
+      for(let i=0;i<10;i++)
+        {
+          element[i].height=array[i]+"%";
+          
+        }
+   
+    }
+    
+    
+    function action()
+    {
+      let i=0,j=0;
+      const id= setInterval(move,100);
+      function move()
+      {
+        show();
+        
+        if(j<(9-i))
+        {
+          element[j].backgroundColor="white";
+          element[j+1].backgroundColor="white";
+        }
+        else{
+          element[j].backgroundColor="green";
+        }
+        if((j!=0)&&(i<10))
+        {
+          element[j-1].backgroundColor="blue";
+        }
+        
+        if(array[j]>array[j+1])
+        {
+          element[j].backgroundColor="red";
+          element[j+1].backgroundColor="red";
+          let temp=array[j];
+          array[j]=array[j+1];
+          array[j+1]= temp;
+        }
+        j++;
+        
+        if(j==(10-i))
+        {
+          
+          if(i==10)
+          {
+            clearIntervel(id);
+          }
+          else
+          {
+            j=0;
+            i++;
+          }
+        }
+      }
+    }
+   
+    
+      
+      
+  </script>
+ </body>
+</html>
